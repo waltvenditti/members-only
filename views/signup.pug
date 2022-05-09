@@ -1,0 +1,29 @@
+extends layout 
+
+block content 
+  h1= title
+
+  p Note that signing up does not make you a member. 
+  p To become a member, you must prove knowledge of a passcode after signing up. 
+
+  p you need to connect this app to the mongo database
+
+  form.sign-up(method="POST" action="")
+    label(for="first_name") First Name: 
+    input(type="text", placeholder="", name="first_name", value=(user===undefined ? "" : user.first_name))
+    br
+    label(for="last_name") Last Name: 
+    input(type="text", placeholder="", name="last_name", value=(user===undefined ? "" : user.last_name))
+    br
+    label(for="username") Username: 
+    input(type="text", placeholder="", name="username", value=(user===undefined ? "" : user.username))
+    br
+    label(for="password") Password: 
+    input(type="password", placeholder="", name="password", value=(user===undefined ? "" : user.password))
+    br
+    button(type="submit") Submit
+
+  if errors 
+    ul 
+      for error in errors  
+        li!= error.msg 

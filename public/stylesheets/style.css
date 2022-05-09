@@ -6,3 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
+
+.sign-up input {
+  margin-bottom: 8px;
+}
