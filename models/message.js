@@ -11,4 +11,4 @@ var MsgSchema = new Schema (
   }
 )
 
-module.exports = mongoose.model("MsgSchema", MsgSchema);
+module.exports = mongoose.model("Message", MsgSchema);
