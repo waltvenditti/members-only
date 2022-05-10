@@ -13,4 +13,13 @@ router.get("/signup", userController.user_signup_get);
 // POST signup page
 router.post("/signup", userController.user_signup_post);
 
+// GET become member page
+router.get("/joinclub", userController.join_club_get);
+
+// POST become member page
+router.post("/joinclub", userController.join_club_post);
+
+// GET members landing page
+router.get("/memberpage", userController.member_landing_get);
+
 module.exports = router;

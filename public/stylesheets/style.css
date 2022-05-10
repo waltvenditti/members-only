@@ -10,3 +10,11 @@ a {
 .sign-up input {
   margin-bottom: 8px;
 }
+
+.error-list {
+  color: red;
+}
+
+.become-member input {
+  margin-bottom: 8px;
+}

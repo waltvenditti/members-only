@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+  h1= title 
+  p Enter the secret passcode to become a bona-fide member.
+  form.become-member(method="POST" action="") 
+    label(for="username") Your username:
+    input(name="username", type="text")
+    br
+    label(for="passcode") Passcode: 
+    input(name="passcode", type="text")
+    br
+    button(type="submit") Submit
+
+  if errors 
+      ul.error-list 
+        for error in errors  
+          li!= error.msg 
