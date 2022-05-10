@@ -11,11 +11,6 @@ exports.user_signup_get = function(req, res) {
   })
 }
 
-// handle user-submitted signup doc
-// exports.user_signup_post = function(req, res) {
-//   res.send("This POST controller is under construction");
-// }
-
 exports.user_signup_post = [
   // validate and sanitize
   body("first_name", "You must enter a first name").trim().isLength({ min: 1 }).escape(),
@@ -52,14 +47,18 @@ exports.user_signup_post = [
         });
         user.save((err) => {
           if (err) { return next(err); }
-          res.render("signupsuccess", {
-            title: `Welcome, ${user.username}`
-          });
+          res.redirect("signupsuccess");
         });
       })
     }
   }
 ];
+
+exports.signup_success_get = function(req, res) {
+  res.render("signupsuccess", {
+    title: `Welcome, `
+  });
+}
 
 exports.join_club_get = function(req, res) {
   res.render("joinclub", {
@@ -79,10 +78,13 @@ exports.join_club_post = [
       res.render("joinclub", {
         title: "Join The Club",
         errors: errors.array(),
-      })
-    } else {
+      });
+    } 
+    // everything above works. below is where the problem is
+    else {
       // data form is valid. check username exists and check passcode is correct
-      User.find({ username: req.body.username }, (err, results) => {
+      User.findOne({ username: req.body.username }, (err, results) => {
+
         if (err) { return next(err); }
         if (results == null) {
           // username not found
@@ -90,6 +92,7 @@ exports.join_club_post = [
             title: "Join The Club",
             errors: [{msg: "The specified user does not exist."}]
           })
+          return;
         }
         // username found. check passcode
         if (req.body.passcode !== PASSCODE) {
@@ -98,6 +101,7 @@ exports.join_club_post = [
             title: "Join The Club",
             errors: [{msg: "The passcode you entered is invalid."}]
           })
+          return;
         }
         if (results.member_status === "member") {
           // user is already a member
@@ -105,6 +109,7 @@ exports.join_club_post = [
             title: "Join The Club",
             errors: [{msg: "You are already a member."}]
           })
+          return;
         }
         // success, upgrade user to member
         // findbyidand update (after creating updated user)
@@ -119,11 +124,9 @@ exports.join_club_post = [
         if (results.admin) {
           updatedUser.admin = true;
         }
-        User.findByIdAndUpdate(results._id, updatedUser, {}, (err, updateResults) => {
+        User.findByIdAndUpdate(results._id, updatedUser, {}, (err) => {
           if (err) { return next(err); }
-          res.redirect("memberpage", {
-            title: "Members Club"
-          });
+          res.redirect("/memberpage");
         });
       });
     }

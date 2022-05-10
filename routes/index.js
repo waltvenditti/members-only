@@ -22,4 +22,7 @@ router.post("/joinclub", userController.join_club_post);
 // GET members landing page
 router.get("/memberpage", userController.member_landing_get);
 
+// GET signup successful page
+router.get("/signupsuccess", userController.signup_success_get);
+
 module.exports = router;
