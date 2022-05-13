@@ -8,19 +8,19 @@ block content
 
   form.sign-up(method="POST" action="")
     label(for="first_name") First Name: 
-    input(type="text", placeholder="", name="first_name", value=(user===undefined ? "" : user.first_name))
+    input(type="text", placeholder="", autocomplete="off", name="first_name", value=(user===undefined ? "" : user.first_name))
     br
     label(for="last_name") Last Name: 
-    input(type="text", placeholder="", name="last_name", value=(user===undefined ? "" : user.last_name))
+    input(type="text", placeholder="", autocomplete="off", name="last_name", value=(user===undefined ? "" : user.last_name))
     br
     label(for="username") Username: 
-    input(type="text", placeholder="", name="username", value=(user===undefined ? "" : user.username))
+    input(type="text", placeholder="", autocomplete="off", name="username", value=(user===undefined ? "" : user.username))
     br
     label(for="password") Password: 
-    input(type="password", placeholder="", name="password")
+    input(type="password", placeholder="", autocomplete="off", name="password")
     br
     label(for="password") Confirm Password: 
-    input(type="password", placeholder="", name="password2")
+    input(type="password", placeholder="", autocomplete="off", name="password2")
     br
     button(type="submit") Submit
 

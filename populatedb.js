@@ -6,6 +6,7 @@ if (!userArgs[0].startsWith("mongodb")) {
 var async = require("async");
 var User = require("./models/user");
 var Message = require("./models/message");
+var bcrypt = require("bcryptjs");
 
 var mongoose = require("mongoose");
 var mongoDB = userArgs[0];
@@ -22,21 +23,28 @@ function userCreate(first_name, last_name, username, password, member_status, ad
     first_name: first_name,
     last_name: last_name,
     username: username,
-    password: password,
     member_status: member_status,
   };
   if (admin) userdetail.admin = true;
 
-  var user = new User(userdetail);
-  user.save((err) => {
+  bcrypt.hash(password, 10, (err, hashedPW) => {
     if (err) {
-      cb(err, null);
-      return;
+      res.send("Error with bcrypt");
     }
-    console.log("New User: " + user);
-    users.push(user);
-    cb(null, user);
+    userdetail.password = hashedPW;
+    var user = new User(userdetail);
+    user.save((err) => {
+      if (err) {
+        cb(err, null);
+        return;
+      }
+      console.log("New User: " + user);
+      users.push(user);
+      cb(null, user);
+    });
   });
+
+  
 }
 
 function messageCreate(author, title, text, timestamp, cb) {

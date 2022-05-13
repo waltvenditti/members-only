@@ -5,10 +5,10 @@ block content
   p Enter the secret passcode to become a bona-fide member.
   form.become-member(method="POST" action="") 
     label(for="username") Your username:
-    input(name="username", type="text")
+    input(name="username", type="text", autocomplete="off")
     br
     label(for="passcode") Passcode: 
-    input(name="passcode", type="text")
+    input(name="passcode", type="text", autocomplete="off")
     br
     button(type="submit") Submit
 
