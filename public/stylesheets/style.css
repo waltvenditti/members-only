@@ -22,3 +22,15 @@ a {
 .become-member input {
   margin-bottom: 8px;
 }
+
+.header-div {
+  display: flex;
+}
+
+.header-ele {
+  margin-left: 12px;
+}
+
+.logout {
+  margin-left: auto;
+}

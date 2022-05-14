@@ -7,7 +7,7 @@ const PASSCODE = "a broken smile beneath her whispered wings"
 // Display the user signup page
 exports.user_signup_get = function(req, res) {
   res.render("signup", {
-    title: "Sign Up"
+    title: "Sign Up",
   })
 }
 
@@ -30,7 +30,7 @@ exports.user_signup_post = [
       })
       res.render("signup", {
         title: "Sign Up",
-        user: resendUser,
+        resendUser: resendUser,
         errors: errors.array(),
       })
     } else {
@@ -60,20 +60,14 @@ exports.user_login_get = function(req, res) {
   });
 }
 
-exports.user_login_post = function(req, res, next) {
-  passport.authenticate("local", {
-    successRedirect: "/signupsuccess",
-    failureRedirect: "/login"
-  })(req, res, next);
-};
-
 exports.signup_success_get = function(req, res) {
-  res.render("signupsuccess");
+  res.render("signupsuccess", {
+  });
 }
 
 exports.join_club_get = function(req, res) {
   res.render("joinclub", {
-    title: "Join The Club"
+    title: "Join The Club",
   })
 }
 
@@ -101,7 +95,7 @@ exports.join_club_post = [
           // username not found
           res.render("joinclub", {
             title: "Join The Club",
-            errors: [{msg: "The specified user does not exist."}]
+            errors: [{msg: "The specified user does not exist."}],
           })
           return;
         }
@@ -110,7 +104,7 @@ exports.join_club_post = [
           // passcode is incorrect
           res.render("joinclub", {
             title: "Join The Club",
-            errors: [{msg: "The passcode you entered is invalid."}]
+            errors: [{msg: "The passcode you entered is invalid."}],
           })
           return;
         }
@@ -118,7 +112,7 @@ exports.join_club_post = [
           // user is already a member
           res.render("joinclub", {
             title: "Join The Club",
-            errors: [{msg: "You are already a member."}]
+            errors: [{msg: "You are already a member."}],
           })
           return;
         }
@@ -146,6 +140,6 @@ exports.join_club_post = [
 
 exports.member_landing_get = function(req, res) {
   res.render("memberpage", {
-    title: "Members Club"
+    title: "Members Club",
   })
 }

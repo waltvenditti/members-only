@@ -3,6 +3,10 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    a(href="/") Homepage
+    div.header-div
+      a(href="/") Homepage
+      a.header-ele(href="/signupsuccess") Sign-in Landing
+      if currentUser
+        a.logout(href="/logout") Log Out
   body
     block content

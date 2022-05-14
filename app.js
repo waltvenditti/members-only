@@ -1,17 +1,15 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+var createError      = require("http-errors");
+var express          = require("express");
+var path             = require("path");
+var cookieParser     = require("cookie-parser");
+var logger           = require("morgan");
+var bcrypt           = require("bcryptjs");
+var passport         = require("passport");
+var session          = require("express-session");
 require("dotenv").config();
-var bcrypt = require("bcryptjs");
-var passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-var session = require("express-session");
-
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-
 var User = require("./models/user");
 
 var app = express();
@@ -37,9 +35,13 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" });
-      }
+      bcrypt.compare(password, user.password, (err, res) => {
+        if (res) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: "Incorrect password" });
+        }
+      })
       return done(null, user);
     });
   })
@@ -60,6 +62,12 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUniniti
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
+
+// middleware to access current user
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+})
 
 app.use(logger("dev"));
 app.use(express.json());

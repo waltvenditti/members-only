@@ -2,7 +2,7 @@ extends layout
 
 block content 
   h3 Signup successful. 
-  if req 
+  if user 
     h1 Welcome, #{user.username}
   else 
     h1 Welcome.

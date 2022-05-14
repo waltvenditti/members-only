@@ -1,10 +1,12 @@
 var express = require("express");
+var passport = require("passport");
+const app = require("../app");
 var router = express.Router();
 var userController = require("../controllers/userController");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "Members Only" });
+  res.render("index", { title: "Members Only", user: req.user });
 });
 
 // GET signup page
@@ -17,7 +19,16 @@ router.post("/signup", userController.user_signup_post);
 router.get("/login", userController.user_login_get);
 
 // POST login page
-router.post("/login", userController.user_login_post);
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/signupsuccess",
+  failureRedirect: "/login"
+}));
+
+// GET logout 
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+})
 
 // GET become member page
 router.get("/joinclub", userController.join_club_get);
