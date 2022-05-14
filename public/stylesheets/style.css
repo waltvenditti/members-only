@@ -11,6 +11,10 @@ a {
   margin-bottom: 8px;
 }
 
+.sign-up button {
+  margin-bottom: 8px;
+}
+
 .error-list {
   color: red;
 }

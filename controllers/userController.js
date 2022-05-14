@@ -1,7 +1,7 @@
 var User = require("../models/user");
 const { body,validationResult } = require("express-validator"); 
 const bcrypt = require("bcryptjs/dist/bcrypt");
-const req = require("express/lib/request");
+const passport = require("passport");
 const PASSCODE = "a broken smile beneath her whispered wings"
 
 // Display the user signup page
@@ -54,10 +54,21 @@ exports.user_signup_post = [
   }
 ];
 
-exports.signup_success_get = function(req, res) {
-  res.render("signupsuccess", {
-    title: `Welcome, `
+exports.user_login_get = function(req, res) {
+  res.render("login", {
+    title: "Log In",
   });
+}
+
+exports.user_login_post = function(req, res, next) {
+  passport.authenticate("local", {
+    successRedirect: "/signupsuccess",
+    failureRedirect: "/login"
+  })(req, res, next);
+};
+
+exports.signup_success_get = function(req, res) {
+  res.render("signupsuccess");
 }
 
 exports.join_club_get = function(req, res) {

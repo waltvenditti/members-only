@@ -2,5 +2,8 @@ extends layout
 
 block content 
   h3 Signup successful. 
-  h1= title 
+  if req 
+    h1 Welcome, #{user.username}
+  else 
+    h1 Welcome.
   a(href="/joinclub") Become a bona-fide member
