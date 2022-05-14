@@ -20,6 +20,14 @@ exports.user_signup_post = [
   body("password2", "You must enter your password twice").trim().isLength({ min: 1 }).custom((value, { req }) => value===req.body.password).withMessage("The passwords do not match"),
   // process req following v/s
   (req, res, next) => {
+    User.findOne({ username: req.username }, (err, results) => {
+      if (err) { return next(err); }
+      if (results !== null) {
+        var error = new Error;
+        error.status = 404;
+        // STOPPED HERE. NEED TO FIGURE OUT HOW TO WRITE A CUSTOM ERROR MSG AGAIN
+      }
+    })
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // there are errors. render form again with sanitized values and error messages
@@ -47,7 +55,7 @@ exports.user_signup_post = [
         });
         user.save((err) => {
           if (err) { return next(err); }
-          res.redirect("signupsuccess");
+          res.redirect("/signupsuccess");
         });
       })
     }

@@ -30,6 +30,13 @@ router.get("/loginfail", (req, res) => {
   res.render("loginfail", { title: "Log In"})
 });
 
+router.get("/signupsuccess_and_login", passport.authenticate("local", 
+{
+  successRedirect: "/signupsuccess",
+  failureRedirect: "/loginfail"
+}
+))
+
 // GET logout 
 router.get("/logout", (req, res) => {
   req.logout();

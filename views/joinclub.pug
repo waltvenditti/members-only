@@ -2,15 +2,18 @@ extends layout
 
 block content 
   h1= title 
-  p Enter the secret passcode to become a bona-fide member.
-  form.become-member(method="POST" action="") 
-    label(for="username") Your username:
-    input(name="username", type="text", autocomplete="off")
-    br
-    label(for="passcode") Passcode: 
-    input(name="passcode", type="text", autocomplete="off")
-    br
-    button(type="submit") Submit
+  if (currentUser&&currentUser.member_status=="member")
+    p You are already a member. 
+  else if (currentUser) 
+    p Enter the secret passcode to become a member.
+    form.become-member(method="POST" action="") 
+      label(for="passcode") Passcode: 
+      input(name="passcode", type="text", autocomplete="off")
+      input(type="hidden" name="username" value=currentUser.username)
+      br
+      button(type="submit") Submit
+  else 
+    p Log in or sign up first. 
 
   if errors 
       ul.error-list 

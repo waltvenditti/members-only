@@ -11,7 +11,10 @@ html
           a.rightside(href="/logout") Log Out
         else 
           a.rightside(href="/login") Log In
-      if currentUser 
+      if (currentUser&&currentUser.member_status==="member")
+        div.sub-header-div
+          p.rightside Logged in as: #{currentUser.username} (member)
+      else if (currentUser)
         div.sub-header-div
           p.rightside Logged in as: #{currentUser.username}
       
