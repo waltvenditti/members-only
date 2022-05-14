@@ -24,6 +24,10 @@ a {
 }
 
 .header-div {
+  min-height: 62px;
+}
+
+.sub-header-div {
   display: flex;
 }
 
@@ -31,6 +35,6 @@ a {
   margin-left: 12px;
 }
 
-.logout {
+.rightside {
   margin-left: auto;
 }

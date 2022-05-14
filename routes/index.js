@@ -19,10 +19,16 @@ router.post("/signup", userController.user_signup_post);
 router.get("/login", userController.user_login_get);
 
 // POST login page
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/signupsuccess",
-  failureRedirect: "/login"
-}));
+router.post("/login", passport.authenticate("local", 
+  {
+    successRedirect: "/signupsuccess",
+    failureRedirect: "/loginfail"
+  }
+));
+
+router.get("/loginfail", (req, res) => {
+  res.render("loginfail", { title: "Log In"})
+});
 
 // GET logout 
 router.get("/logout", (req, res) => {

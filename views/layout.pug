@@ -4,9 +4,16 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     div.header-div
-      a(href="/") Homepage
-      a.header-ele(href="/signupsuccess") Sign-in Landing
-      if currentUser
-        a.logout(href="/logout") Log Out
+      div.sub-header-div
+        a(href="/") Homepage
+        a.header-ele(href="/signupsuccess") Sign-in Landing
+        if currentUser
+          a.rightside(href="/logout") Log Out
+        else 
+          a.rightside(href="/login") Log In
+      if currentUser 
+        div.sub-header-div
+          p.rightside Logged in as: #{currentUser.username}
+      
   body
     block content

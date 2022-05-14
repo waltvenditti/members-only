@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+  h1= title 
+  p(style="color: red") Invalid username and/or password
+
+  form.sign-up(method="POST" action="/login")
+    label(for="username") Username: 
+    input(type="text", placeholder="", autocomplete="off", name="username")
+    br
+    label(for="password") Password: 
+    input(type="password", placeholder="", autocomplete="off", name="password")
+    br
+    button(type="submit") Submit
+    br
+  a(href="/signup") Sign up
