@@ -2,10 +2,19 @@ extends layout
 
 block content 
   h1= title 
-  if (currentUser&&currentUser.member_status=="member")
+  if (currentUser&&currentUser.admin===true)
+    p You are already both a user and an admin. 
+  else if (currentUser&&currentUser.member_status=="member"&&currentUser.admin===undefined)
     p You are already a member. 
-  else if (currentUser) 
-    p Enter the secret passcode to become a member.
+    p Enter the passcode to become an admin.
+    form.become-member(method="POST" action="")
+      label(for="passcode") Passcode: 
+      input(name="passcode", type="text", autocomplete="off")
+      input(type="hidden" name="username" value=currentUser.username)
+      br
+      button(type="submit") Submit
+  else if (currentUser&&currentUser.member_status==="user"&&currentUser.admin===undefined) 
+    p Enter the passcode to become a member.
     form.become-member(method="POST" action="") 
       label(for="passcode") Passcode: 
       input(name="passcode", type="text", autocomplete="off")

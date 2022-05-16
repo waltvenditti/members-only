@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+  h3 Login successful. 
+  if currentUser 
+    h1 Welcome, #{currentUser.username}.
+  else 
+    h1 Welcome. How did you get to this page without logging in? 
+  a.big-hyperlink(href="/joinclub") Become a member
+  br
+  br
+  a.big-hyperlink(href="/chat") Go to chat log 

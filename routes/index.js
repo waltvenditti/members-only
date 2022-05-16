@@ -21,7 +21,7 @@ router.get("/login", userController.user_login_get);
 // POST login page
 router.post("/login", passport.authenticate("local", 
   {
-    successRedirect: "/signupsuccess",
+    successRedirect: "/loginsuccess",
     failureRedirect: "/loginfail"
   }
 ));
@@ -29,13 +29,6 @@ router.post("/login", passport.authenticate("local",
 router.get("/loginfail", (req, res) => {
   res.render("loginfail", { title: "Log In"})
 });
-
-router.get("/signupsuccess_and_login", passport.authenticate("local", 
-{
-  successRedirect: "/signupsuccess",
-  failureRedirect: "/loginfail"
-}
-))
 
 // GET logout 
 router.get("/logout", (req, res) => {
@@ -52,7 +45,10 @@ router.post("/joinclub", userController.join_club_post);
 // GET members landing page
 router.get("/memberpage", userController.member_landing_get);
 
-// GET signup successful page
-router.get("/signupsuccess", userController.signup_success_get);
+// GET login successful page
+router.get("/loginsuccess", userController.login_success_get);
+
+// GET chat page
+router.get("/chat", userController.chat_get);
 
 module.exports = router;

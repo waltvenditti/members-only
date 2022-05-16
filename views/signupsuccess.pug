@@ -1,9 +1,0 @@
-extends layout 
-
-block content 
-  h3 Signup successful. 
-  if currentUser 
-    h1 Welcome, #{currentUser.username}.
-  else 
-    h1 Welcome.
-  a(href="/joinclub") Become a bona-fide member

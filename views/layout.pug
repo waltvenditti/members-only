@@ -6,14 +6,18 @@ html
     div.header-div
       div.sub-header-div
         a(href="/") Homepage
-        a.header-ele(href="/signupsuccess") Sign-in Landing
         if currentUser
           a.rightside(href="/logout") Log Out
+          a.header-ele(href="/joinclub") Become a Member
         else 
           a.rightside(href="/login") Log In
-      if (currentUser&&currentUser.member_status==="member")
+          a.header-ele(href="/signup") Sign Up
+      if (currentUser&&currentUser.member_status==="member"&&currentUser.admin===undefined)
         div.sub-header-div
           p.rightside Logged in as: #{currentUser.username} (member)
+      else if (currentUser&&currentUser.admin===true)
+        div.sub-header-div
+          p.rightside Logged in as: #{currentUser.username} (admin)
       else if (currentUser)
         div.sub-header-div
           p.rightside Logged in as: #{currentUser.username}

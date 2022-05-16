@@ -2,9 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-
-  a(href="/login") Login
+  p Welcome to the #{title} Chat Client.
+  p Guests and users can view discussions but cannot see post authors or post times. 
+  p To see post authors and post times, become a member.
+  p Becoming a member requires knowing the secret passcode.
   br
-  a(href="/signup") Signup
+  a.big-hyperlink(href="/chat") Go to chat log
 

@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  h1= title
+
+  for message in messages 
+    div.message-header
+      p #{message.author.username}, #{message.timestamp}
+    div.message-title
+      p #{message.title}
+    div.message-content
+      p #{message.text}
+    br
