@@ -52,7 +52,6 @@ a {
 
 .big-hyperlink {
   font-size: 16px;
-  margin-bottom: 8px;
 }
 
 .message-header-username {
@@ -75,7 +74,7 @@ a {
 }
 
 .login-success-text {
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .new-msg-btn {
@@ -87,7 +86,7 @@ a {
   background-color: lightsteelblue;
   color: white;
   font-weight: bold;
-  padding: 6px 12px;
+  padding: 4px 12px;
 }
 .new-msg-btn:hover {
   background-color: skyblue;

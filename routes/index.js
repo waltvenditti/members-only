@@ -3,6 +3,7 @@ var passport = require("passport");
 const app = require("../app");
 var router = express.Router();
 var userController = require("../controllers/userController");
+var messageController = require("../controllers/messageController");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -48,5 +49,8 @@ router.get("/loginsuccess", userController.login_success_get);
 
 // GET chat page
 router.get("/chat", userController.chat_get);
+
+// GET new message page
+router.get("newmessage", messageController.new_msg_get);
 
 module.exports = router;

@@ -4,7 +4,7 @@ block content
   h1= title
 
   if currentUser&&currentUser.member_status==="member"
-    a.btn-hyperlink(href="/"): button.new-msg-btn(type="button") New Message
+    a.btn-hyperlink(href="/newmessage"): button.new-msg-btn(type="button") New Message
   for message in messages 
     if currentUser&&currentUser.member_status==="member"
       p
