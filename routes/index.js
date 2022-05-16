@@ -26,6 +26,7 @@ router.post("/login", passport.authenticate("local",
   }
 ));
 
+// GET loginfail page
 router.get("/loginfail", (req, res) => {
   res.render("loginfail", { title: "Log In"})
 });
@@ -41,9 +42,6 @@ router.get("/joinclub", userController.join_club_get);
 
 // POST become member page
 router.post("/joinclub", userController.join_club_post);
-
-// GET members landing page
-router.get("/memberpage", userController.member_landing_get);
 
 // GET login successful page
 router.get("/loginsuccess", userController.login_success_get);

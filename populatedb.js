@@ -90,10 +90,10 @@ function createMessages(cb) {
   async.parallel(
     [
       function(callback) {
-        messageCreate(users[0], "IMPORTANT ANNOUNCEMENT", "Summer has finally started. Get outside and get some sun.", date1, callback);
+        messageCreate(users[0], "IMPORTANT ANNOUNCEMENT", "Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun.", date1, callback);
       },
       function(callback) {
-        messageCreate(users[2], "re:IMPORTANT ANNOUNCEMENT", "I live in Australia. It's winter right now...", date2, callback);
+        messageCreate(users[2], "re:IMPORTANT ANNOUNCEMENT", "I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now...", date2, callback);
       },
     ],
     cb

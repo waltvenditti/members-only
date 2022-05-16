@@ -3,11 +3,28 @@ extends layout
 block content 
   h1= title
 
+  if currentUser&&currentUser.member_status==="member"
+    a.btn-hyperlink(href="/"): button.new-msg-btn(type="button") New Message
   for message in messages 
-    div.message-header
-      p #{message.author.username}, #{message.timestamp}
-    div.message-title
-      p #{message.title}
+    if currentUser&&currentUser.member_status==="member"
+      p
+        span.message-header-username #{message.author.username} 
+        | &nbsp;
+        | &nbsp;
+        span.message-header-timestamp #{message.timestamp}
+        | &nbsp;
+        | &nbsp;  
+        span.message-title #{message.title}
+    else 
+      p 
+        span.message-header-anon Hidden User
+        | &nbsp;
+        | &nbsp;
+        span.message-header-anon Hidden Timestamp 
+        | &nbsp;
+        | &nbsp;
+        span.message-title #{message.title}
+
     div.message-content
       p #{message.text}
     br

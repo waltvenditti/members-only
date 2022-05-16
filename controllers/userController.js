@@ -174,7 +174,7 @@ exports.join_club_post = [
             if (err) {
               return next(err);
             }
-            res.redirect("/memberpage");
+            res.redirect("/loginsuccess");
           });
         } else if (
           req.body.passcode === PASSCODE &&
@@ -193,7 +193,7 @@ exports.join_club_post = [
             if (err) {
               return next(err);
             }
-            res.redirect("/memberpage");
+            res.redirect("/loginsuccess");
           });
         } else {
           // passcode is incorrect
@@ -208,23 +208,19 @@ exports.join_club_post = [
   },
 ];
 
-exports.member_landing_get = function(req, res) {
-  res.render("memberpage", {
-    title: "Members Club",
-  })
-}
-
 exports.chat_get = function(req, res) {
   Message.find().sort([["timestamp", "ascending"]]).populate("author").exec((err, messages) => {
     if (err) { return next(err); }
+    let newMessages = [];
     for (let i = 0; i < messages.length; i++) {
+      let newMessage = { ...messages[i]._doc };
       let date = messages[i].timestamp;
-      messages[i].timestamp = format(date, "d MMM yyyy, k:mm");
-      // STOPPED HERE TRYING TO FORMAT DATE
+      newMessage.timestamp = format(date, "d MMM yyyy, h:mm bb");
+      newMessages.push(newMessage);
     }
     res.render("chat", {
       title: "Chat Log",
-      messages: messages
+      messages: newMessages
     })
   })
 }
