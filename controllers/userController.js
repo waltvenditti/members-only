@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs/dist/bcrypt");
 const passport = require("passport");
 const PASSCODE = "a broken smile beneath her whispered wings"
 const ADMIN_PASSCODE = "i will see you in time"
+const { format } = require("date-fns");
 
 // Display the user signup page
 exports.user_signup_get = function(req, res) {
@@ -217,7 +218,9 @@ exports.chat_get = function(req, res) {
   Message.find().sort([["timestamp", "ascending"]]).populate("author").exec((err, messages) => {
     if (err) { return next(err); }
     for (let i = 0; i < messages.length; i++) {
-      //messages[i].timestamp = 
+      let date = messages[i].timestamp;
+      messages[i].timestamp = format(date, "d MMM yyyy, k:mm");
+      // STOPPED HERE TRYING TO FORMAT DATE
     }
     res.render("chat", {
       title: "Chat Log",
