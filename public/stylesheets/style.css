@@ -100,3 +100,13 @@ a {
 .btn-hyperlink {
   display: inline;
 }
+
+.form-div {
+  margin-bottom: 12px;
+}
+.form-div-textarea {
+  margin-bottom: 12px;
+}
+.form-div-textarea label {
+  vertical-align: top;
+}

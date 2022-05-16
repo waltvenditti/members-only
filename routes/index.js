@@ -48,9 +48,9 @@ router.post("/joinclub", userController.join_club_post);
 router.get("/loginsuccess", userController.login_success_get);
 
 // GET chat page
-router.get("/chat", userController.chat_get);
+router.get("/chat", messageController.chat_get);
 
 // GET new message page
-router.get("newmessage", messageController.new_msg_get);
+router.get("/newmessage", messageController.new_msg_get);
 
 module.exports = router;
