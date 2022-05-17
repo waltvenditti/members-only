@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var MsgSchema = new Schema (
   {
     author: {type: Schema.Types.ObjectId, ref: "User", required: true}, 
-    title: {type: String, required: true},
+    title: {type: String},
     text: {type: String, required: true},
     timestamp: {type: Date, required: true},
   }

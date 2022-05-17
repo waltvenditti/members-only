@@ -85,16 +85,20 @@ function createUsers(cb) {
 }
 
 function createMessages(cb) {
-  let date1 = new Date("June 15, 2022 14:00:00");
-  let date2 = new Date("June 15, 2019 14:05:10");
+  let date1 = new Date("May 15, 2022 14:05:18");
+  let date2 = new Date("May 16, 2022 08:00:10");
+  let date3 = new Date("May 16, 2022 02:02:02");
   async.parallel(
     [
       function(callback) {
-        messageCreate(users[0], "IMPORTANT ANNOUNCEMENT", "Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun. Summer has finally started. Get outside and get some sun.", date1, callback);
+        messageCreate(users[0], "IMPORTANT ANNOUNCEMENT", "The warm weather is finally here. Get out and get some sun.", date1, callback);
       },
       function(callback) {
-        messageCreate(users[2], "re:IMPORTANT ANNOUNCEMENT", "I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now... I live in Australia. It's winter right now...", date2, callback);
+        messageCreate(users[2], "re:IMPORTANT ANNOUNCEMENT", "I live in Australia. It's winter right now.", date2, callback);
       },
+      function(callback) {
+        messageCreate(users[1], "All work and no play makes Jack a dull boy", "All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy All work and no play makes Jack a dull boy", date3, callback);
+      }
     ],
     cb
   )

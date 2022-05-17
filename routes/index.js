@@ -50,7 +50,13 @@ router.get("/loginsuccess", userController.login_success_get);
 // GET chat page
 router.get("/chat", messageController.chat_get);
 
+// POST chat page / delete message
+router.post("/chat", messageController.chat_post);
+
 // GET new message page
 router.get("/newmessage", messageController.new_msg_get);
+
+// POST new message 
+router.post("/newmessage", messageController.new_msg_post);
 
 module.exports = router;

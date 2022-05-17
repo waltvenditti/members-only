@@ -104,9 +104,37 @@ a {
 .form-div {
   margin-bottom: 12px;
 }
+.form-div input {
+  width: 375px;
+}
 .form-div-textarea {
   margin-bottom: 12px;
 }
 .form-div-textarea label {
   vertical-align: top;
+}
+.form-div-textarea textarea {
+  width: 375px;
+  height: 245px;
+}
+
+.delete-button {
+  margin-left: 16px;
+  background-color: mistyrose;
+  border: 2px solid rgb(212, 24, 24);
+  border-radius: 6px;
+  color: rgb(102, 0, 0);
+}
+.delete-button:hover {
+  background-color: red;
+  color: black;
+  font-weight: bold;
+}
+.delete-button:active {
+  background-color: black;
+  color: red;
+}
+
+.delete-form {
+  display: inline;
 }

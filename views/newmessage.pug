@@ -10,9 +10,16 @@ block content
   else 
     form(method="POST" action="")
       div.form-div 
-        label(for="title") Message Title: 
+        label(for="title") Message Title
+        br 
         input(type="text", name="title", autocomplete="off")
       div.form-div-textarea
-        label(for="text") Message: 
+        label(for="text") Message
+        br
         textarea(name="text")
       button(type="submit") Submit
+
+  if errors 
+      ul.error-list 
+        for error in errors  
+          li!= error.msg 

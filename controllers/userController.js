@@ -141,7 +141,6 @@ exports.join_club_post = [
         errors: errors.array(),
       });
     }
-    // everything above works. below is where the problem is
     else {
       // data form is valid. check username exists and check passcode is correct
       User.findOne({ username: req.body.username }, (err, results) => {
