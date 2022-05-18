@@ -1,6 +1,6 @@
 # members-only
 
-see live: (project not complete)
+see live: https://deploy-members-only.herokuapp.com/
 
 background
 ==========
