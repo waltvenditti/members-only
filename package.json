@@ -6,8 +6,9 @@
   },
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "serverstart": "DEBUG=members-only:* npm start"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=members-only:* npm run devstart"
   },
   "dependencies": {
     "async": "^3.2.3",
