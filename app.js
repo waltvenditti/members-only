@@ -6,6 +6,7 @@ var logger           = require("morgan");
 var bcrypt           = require("bcryptjs");
 var passport         = require("passport");
 var session          = require("express-session");
+var helmet           = require("helmet");
 require("dotenv").config();
 const LocalStrategy = require("passport-local").Strategy;
 var indexRouter = require("./routes/index");
@@ -73,6 +74,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(helmet);
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
